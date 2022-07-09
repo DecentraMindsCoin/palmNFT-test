@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
-
 import { TransactionContext } from "../context/TransactionContext";
 import { shortenAddress } from "../utils/shortenAddress";
 import Loader from "../components/Loader";
+import { RiSendToBack } from "react-icons/ri";
+import MetamaskButton from "../components/MetamaskButton";
+import { getJsonWalletAddress } from "ethers/lib/utils";
 
 const companyCommonStyles =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
@@ -17,18 +19,20 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
     step="0.0001"
     value={value}
     onChange={(e) => handleChange(e, name)}
-    className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
+    className="my-2 px-4 w-full rounded-full p-2 bg-black text-white border-gray-200 border-2 text-sm "
   />
 );
 
 const Welcome = () => {
   const {
-    currentAccount,
     connectWallet,
+    currentAccount,
     handleChange,
     sendTransaction,
     formData,
     isLoading,
+    
+
   } = useContext(TransactionContext);
 
   const handleSubmit = (e) => {
@@ -41,29 +45,18 @@ const Welcome = () => {
     sendTransaction();
   };
 
+
   return (
     <div className="flex w-full justify-center items-center">
       <div className="flex mf:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
         <div className="flex flex-1 justify-start items-start flex-col mf:mr-10">
           <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
-            Send Palm Tokens <br /> Across The World
+            Transactions in the PALM of your hand!
           </h1>
           <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-            Explore the crypto world. Buy and sell cryptocurrencies easily on
-            Krypto.
+            Explore the crypto world. Send PALM tokens to any wallet easily with our PALM Wallet.
           </p>
-          {!currentAccount && (
-            <button
-              type="button"
-              onClick={connectWallet}
-              className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
-            >
-              <AiFillPlayCircle className="text-white mr-2" />
-              <p className="text-white text-base font-semibold">
-                Connect Wallet
-              </p>
-            </button>
-          )}
+        <MetamaskButton />
 
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${companyCommonStyles}`}>
@@ -84,28 +77,32 @@ const Welcome = () => {
         </div>
 
         <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
-          <div className="p-3 flex justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card .white-glassmorphism ">
-            <div className="flex justify-between flex-col w-full h-full">
-              <div className="flex justify-between items-start">
+          <div className="border-2 shadow-white/50 hover:shadow-white shadow-lg p-6 flex justify-end items-start flex-col rounded-xl h-52 sm:w-96 w-full my-5 eth-card .white-glassmorphism">
+            <div className="flex justify-between flex-col w-full h-full rounded-xl bg-gray-200 p-4">
+              <div className="flex  justify-between items-start">
                 <div className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
-                  <SiEthereum fontSize={21} color="#fff" />
-                </div>
-                <BsInfoCircle fontSize={17} color="#fff" />
+                  <img src="/images/palm-token-logo.png" />
+                </div> <h1 className="font-bold">Wallet</h1>
+                <BsInfoCircle fontSize={17} color="black" />
               </div>
               <div>
-                <p className="text-white font-light text-sm">
-                  {shortenAddress(currentAccount)}
+               
+                <p className="font-light text-sm">
+                 <span className="font-bold">Account:</span>  {shortenAddress(currentAccount)}
                 </p>
-                <p className="text-white font-semibold text-lg mt-1">
+                <p className=" font-light text-sm">
+                 <span className="font-bold" onClick={connectWallet}> Balance:</span> <button> VIEW</button>
+                </p>
+                <p className=" font-bold text-lg mt-1">
                   PALM
                 </p>
               </div>
             </div>
           </div>
           {/* Form */}
-          <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
+          <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center bg-gray-200 rounded-xl border-2 border-white shadow-white/50 hover:shadow-white/100 shadow-lg eth-card .white-glassmorphism">
             <Input
-              placeholder="Address To"
+              placeholder="Send PALM to this wallet address"
               name="addressTo"
               type="text"
               handleChange={handleChange}
@@ -117,13 +114,13 @@ const Welcome = () => {
               handleChange={handleChange}
             />
             <Input
-              placeholder="Keyword (Gif)"
+              placeholder="Enter keywords for GIF."
               name="keyword"
               type="text"
               handleChange={handleChange}
             />
             <Input
-              placeholder="Enter Message"
+              placeholder="Enter a message"
               name="message"
               type="text"
               handleChange={handleChange}
@@ -137,7 +134,7 @@ const Welcome = () => {
               <button
                 type="button"
                 onClick={handleSubmit}
-                className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] hover:bg-[#3d4f7c] rounded-full cursor-pointer"
+                className="hover:text-white w-full mt-2 border-2 p-2 border-black bg-gray-200 text-black rounded-full cursor-pointer hover:bg-black"
               >
                 Send PALM
               </button>
