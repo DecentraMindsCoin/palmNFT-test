@@ -8,7 +8,7 @@ import Loader from "../components/Loader";
 import { RiSendToBack } from "react-icons/ri";
 import MetamaskButton from "../components/MetamaskButton";
 import { getJsonWalletAddress } from "ethers/lib/utils";
-
+import TokenLogo from "../../images/palm-token-logo.png";
 const companyCommonStyles =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
 
@@ -81,7 +81,7 @@ const Welcome = () => {
             <div className="flex justify-between flex-col w-full h-full rounded-xl bg-gray-200 p-4">
               <div className="flex  justify-between items-start">
                 <div className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
-                  <img src="/images/palm-token-logo.png" />
+                  <img src={TokenLogo} alt='logo token' />
                 </div> <h1 className="font-bold">Wallet</h1>
                 <BsInfoCircle fontSize={17} color="black" />
               </div>
