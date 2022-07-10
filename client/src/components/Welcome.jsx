@@ -85,14 +85,14 @@ const Welcome = () => {
           </div>
         </div>
 
-        <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
+        <div className="flex flex-col cursor-pointer flex-1 items-center justify-start w-full mf:mt-0 mt-10" onClick={connectWallet}>
           <div className="border-2 shadow-white/50 hover:shadow-white shadow-lg p-6 flex justify-end items-start flex-col rounded-xl h-52 sm:w-96 w-full my-5 eth-card .white-glassmorphism">
             <div className="flex justify-between flex-col w-full h-full rounded-xl bg-gray-200 p-4">
               <div className="flex  justify-between items-start">
                 <div className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
                   <img src={TokenLogo} alt="logo token" />
                 </div>{" "}
-                <h1 className="font-bold">Wallet</h1>
+                <h1 className="font-bold">{!currentAccount ? "Connect Wallet" : "Your Wallet"}</h1>
                 <a
                   href={`https://explorer.palm-uat.xyz/address/${currentAccount}`}
                   target="_blank"
@@ -112,7 +112,7 @@ const Welcome = () => {
                   {shortenAddress(currentAccount)}
                 </p>
                 <div className=" font-light text-sm flex">
-                  <span className="font-bold" onClick={connectWallet}>
+                  <span className="font-bold" >
                     {" "}
                     Balance:
                   </span>{" "}
