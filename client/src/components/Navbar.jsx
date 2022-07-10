@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 import logo from "../../images/logo.png";
 import MetamaskButton from "./MetamaskButton";
-const NavLinks = [
+export const NavLinks = [
   {
     linkName: "About",
     link: "https://palm.io/",
@@ -37,7 +37,7 @@ const Navbar = () => {
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
         <img src={logo} alt="logo" className="w-32 cursor-pointer" />
       </div>
-      <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
+      <ul className="text-white text-xs lg:text-lg md:flex hidden list-none flex-row justify-between items-center flex-initial">
         <div className="md:flex w-full pr-5">
           {NavLinks.map((nav, index) => (
             <div
