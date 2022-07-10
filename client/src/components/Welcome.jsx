@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
@@ -7,7 +7,6 @@ import { shortenAddress } from "../utils/shortenAddress";
 import Loader from "../components/Loader";
 import { RiSendToBack } from "react-icons/ri";
 import MetamaskButton from "../components/MetamaskButton";
-import { getJsonWalletAddress } from "ethers/lib/utils";
 import TokenLogo from "../../images/palm-token-logo.png";
 const companyCommonStyles =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
@@ -31,8 +30,6 @@ const Welcome = () => {
     sendTransaction,
     formData,
     isLoading,
-    
-
   } = useContext(TransactionContext);
 
   const handleSubmit = (e) => {
@@ -45,6 +42,17 @@ const Welcome = () => {
     sendTransaction();
   };
 
+  const [data, setData] = useState([]);
+  const url = `https://explorer.palm-uat.xyz/api?module=account&action=balance&address=${currentAccount}
+  `;
+  useEffect(() => {
+    fetch(url)
+      .then((resp) => resp.json())
+      .then((apiData) => {
+        setData(apiData);
+   return(apiData);
+      });
+  }, [currentAccount]);
 
   return (
     <div className="flex w-full justify-center items-center">
@@ -54,9 +62,10 @@ const Welcome = () => {
             Transactions in the PALM of your hand!
           </h1>
           <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-            Explore the crypto world. Send PALM tokens to any wallet easily with our PALM Wallet.
+            Explore the crypto world. Send PALM tokens to any wallet easily with
+            our PALM Wallet.
           </p>
-        <MetamaskButton />
+          <MetamaskButton />
 
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${companyCommonStyles}`}>
@@ -81,21 +90,38 @@ const Welcome = () => {
             <div className="flex justify-between flex-col w-full h-full rounded-xl bg-gray-200 p-4">
               <div className="flex  justify-between items-start">
                 <div className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
-                  <img src={TokenLogo} alt='logo token' />
-                </div> <h1 className="font-bold">Wallet</h1>
-                <BsInfoCircle fontSize={17} color="black" />
+                  <img src={TokenLogo} alt="logo token" />
+                </div>{" "}
+                <h1 className="font-bold">Wallet</h1>
+                <a
+                  href={`https://explorer.palm-uat.xyz/address/${currentAccount}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {" "}
+                  <BsInfoCircle
+                    fontSize={17}
+                    color="black"
+                    className="hover:bg-purple-400 rounded-full"
+                  />{" "}
+                </a>
               </div>
               <div>
-               
                 <p className="font-light text-sm">
-                 <span className="font-bold">Account:</span>  {shortenAddress(currentAccount)}
+                  <span className="font-bold">Account:</span>{" "}
+                  {shortenAddress(currentAccount)}
                 </p>
-                <p className=" font-light text-sm">
-                 <span className="font-bold" onClick={connectWallet}> Balance:</span> <button> VIEW</button>
-                </p>
-                <p className=" font-bold text-lg mt-1">
-                  PALM
-                </p>
+                <div className=" font-light text-sm flex">
+                  <span className="font-bold" onClick={connectWallet}>
+                    {" "}
+                    Balance:
+                  </span>{" "}
+             
+                    
+                    <p className="pl-1">{`${data.result / 1e17}`.slice(0,4)}</p>
+               
+                </div>
+                <p className=" font-bold text-lg mt-1">PALM</p>
               </div>
             </div>
           </div>
