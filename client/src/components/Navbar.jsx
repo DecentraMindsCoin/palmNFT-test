@@ -86,7 +86,7 @@ const Navbar = () => {
                   className="cursor-pointer border-b border-white lg:border-b-0"
                 >
                   <a href={nav.link}>
-                    <div className="lg:inline-flex lg:w-auto px-2 pr-5 py-4 active:bg-purple-500 hover:pr-16  hover:bg-button-image-2 rounded-xl text-gray-200 font-bold items-center  justify-center  hover:text-gray-200 hover:scale-110 transition duration-200 transform ease-out">
+                    <div className="lg:inline-flex lg:w-auto px-2 pr-5 py-4 active:bg-purple-500 hover:pr-5  hover:bg-button-image-2 rounded-xl text-gray-200 font-bold items-center  justify-center  hover:text-gray-200 hover:scale-110 transition duration-200 transform ease-out">
                       <h1 id="glitch" className="text-gray-200  text-center">
                         {nav.linkName}
                       </h1>
