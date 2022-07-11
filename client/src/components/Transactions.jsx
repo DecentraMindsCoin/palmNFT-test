@@ -94,6 +94,13 @@ const Transactions = () => {
             <TransactionsCard key={i} {...transaction} />
           ))}
         </div>
+
+        {/* Uncomment this to use dummyData instead of Giphy API data and comment above lines 92-96 */}
+        {/* <div className="flex flex-wrap justify-center items-center mt-10 ">
+          {[...dummyData].reverse().map((transaction, i) => (
+            <TransactionsCard key={i} {...transaction} />
+          ))}
+        </div> */}
       </div>
     </div>
   );
