@@ -105,7 +105,7 @@ export const TransactionsProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
 
-      throw new Error("No ethereum object");
+      throw new Error("No ethereum object, no connected Metamask Wallet! Sign in to Metamask");
     }
   };
 
