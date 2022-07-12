@@ -102,7 +102,7 @@ export default function Example() {
                 <div className="text-sm">
                   <a
                     href="#"
-                    className="font-medium text-indigo-600 hover:text-indigo-500 pl-2"
+                    className="font-medium text-yellow-300 hover:text-indigo-500 pl-2"
                   >
                     Forgot your password?
                   </a>
@@ -127,7 +127,7 @@ export default function Example() {
                   <div className="w-full border-t border-gray-300" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">
+                  <span className="px-2 bg-white text-gray-500 rounded-full">
                     Or continue with
                   </span>
                 </div>
