@@ -11,7 +11,7 @@ import TokenLogo from "../../images/palm-token-logo.png";
 
 import { HiMenuAlt4 } from "react-icons/hi";
 const companyCommonStyles =
-  "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
+  "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white hover:bg-yellow-500 hover:text-black ease-in transform transition duration-400";
 
 const Input = ({ placeholder, name, type, value, handleChange }) => (
   <input
