@@ -28,7 +28,7 @@ const Services = () => (
           hype around Palm NFT?
         </h1>
         <p className="text-left my-2 text-white font-light md:w-9/12 w-11/12 text-xl">
-        A new NFT ecosystem for Culture & Creativity, built efficiently with Ethereum
+        A new NFT ecosystem for Culture & Creativity, built efficiently with Ethereum.
         </p>
       </div>
 
