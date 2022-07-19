@@ -35,7 +35,7 @@ export default function Example() {
             Sign in to your PALM Account
           </h2>
           <p className="text-xs text-center pt-5 opacity-50">
-            *Enter any Email and use password123 to login!
+            *Enter an Email and use password123 to test login!
           </p>
         </div>
 
