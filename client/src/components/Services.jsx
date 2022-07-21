@@ -25,7 +25,7 @@ const Services = () => (
         <h1 className="text-white text-3xl sm:text-5xl py-2 text-gradient ">
           What's all the 
           <br />
-          hype around Palm NFT?
+          hype around Palm NFT Studio?
         </h1>
         <p className="text-left my-2 text-white font-light md:w-9/12 w-11/12 text-xl">
         A new NFT ecosystem for Culture & Creativity, built efficiently with Ethereum.
